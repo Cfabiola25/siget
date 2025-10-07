@@ -11,7 +11,7 @@ Ing. Hely Suárez Marín
 
 ---
 
-## 🧠 Resumen del Problema
+## Resumen del Problema
 Las instituciones académicas y deportivas que organizan torneos enfrentan dificultades al manejar la información de manera manual o en archivos dispersos.  
 La falta de un sistema centralizado genera errores en la programación de partidos, duplicidad de datos y poca trazabilidad de resultados.  
 
@@ -20,7 +20,7 @@ A nivel operativo, la ausencia de control unificado impide obtener reportes conf
 
 ---
 
-## 💡 Solución
+## Solución
 Se propone el desarrollo de **SIGET (Sistema de Información y Gestión de Torneos)**, una plataforma web sencilla y centralizada que estandariza la gestión de los torneos deportivos.  
 
 **Operaciones principales:**
@@ -36,7 +36,7 @@ El acceso se realiza con roles **Administrador, Árbitro y Espectador**, garanti
 
 ---
 
-## 👥 Actores y Funciones
+## Actores y Funciones
 
 | **Actor** | **Funciones principales** |
 |------------|-----------------------------|
@@ -46,7 +46,7 @@ El acceso se realiza con roles **Administrador, Árbitro y Espectador**, garanti
 
 ---
 
-## ⚙️ Reglas Clave del Sistema
+## Reglas Clave del Sistema
 - No se permite programar un partido donde el equipo local y visitante sean el mismo.  
 - Un árbitro inactivo no puede ser asignado a un partido.  
 - Los goles deben ser **mayores o iguales a cero** para partidos en estado *played*.  
@@ -55,26 +55,26 @@ El acceso se realiza con roles **Administrador, Árbitro y Espectador**, garanti
 
 ---
 
-## 1️⃣ Descripción general del proceso
+## 1. Descripción general del proceso
 
 El organizador registra equipos/jugadores y árbitros. Luego programa cada partido, asigna un árbitro y, al finalizar el encuentro, registra el resultado.  
 Las estadísticas se consultan en cualquier momento con base en los resultados ya cerrados (*played*).
 
-### 🗺️ Mapa de Procesos
+### Mapa de Procesos
 ![Mapa de Procesos](../uml/export/png/MapadeProcesos.png)
 
 ---
 
-## 2️⃣ Revisión / Verificabilidad
+## 2️. Revisión / Verificabilidad
 Se observó la gestión tradicional de torneos en entornos académicos sin soporte informático formal.  
 El registro de partidos y resultados se realiza mediante hojas de cálculo y grupos de mensajería, lo que genera inconsistencias, errores de comunicación y pérdida de información.  
 Con **SIGET**, toda la información se centraliza en una base de datos relacional con reglas de integridad, evitando duplicidad y garantizando resultados verificables.
 
 ---
 
-## 3️⃣ Diagramas UML para la Base de Datos
+## 3️. Diagramas UML para la Base de Datos
 
-### 3.1 📌 Diagrama de Casos de Uso
+### 3.1 Diagrama de Casos de Uso
 Muestra las principales funciones del sistema y los actores involucrados.  
 Los casos incluyen: Registrar Equipos, Jugadores, Árbitros, Programar Partido, Asignar Árbitro, Registrar Resultado y Consultar Estadísticas.
 
@@ -82,14 +82,14 @@ Los casos incluyen: Registrar Equipos, Jugadores, Árbitros, Programar Partido, 
 
 ---
 
-### 3.2 🧩 Diagrama de Clases
+### 3.2 Diagrama de Clases
 Representa las entidades principales del sistema y sus relaciones: **Equipo**, **Jugador**, **Árbitro** y **Partido**.
 
 ![Diagrama de Clases](../uml/export/png/class.png)
 
 ---
 
-### 3.3 🔄 Diagrama de Estados
+### 3.3 Diagrama de Estados
 Describe el ciclo de vida del partido dentro del sistema.  
 Estados posibles: *scheduled*, *played* y *cancelled*.
 
@@ -97,7 +97,7 @@ Estados posibles: *scheduled*, *played* y *cancelled*.
 
 ---
 
-## 4️⃣ Relaciones de la Base de Datos
+## 4️. Relaciones de la Base de Datos
 
 | **Entidad / Relación** | **Tipo de relación** |
 |--------------------------|----------------------|
@@ -108,7 +108,7 @@ Estados posibles: *scheduled*, *played* y *cancelled*.
 
 ---
 
-## 5️⃣ Restricciones CHECK
+## 5️. Restricciones CHECK
 
 | **Tabla** | **Restricción** |
 |------------|----------------|
@@ -119,7 +119,7 @@ Estados posibles: *scheduled*, *played* y *cancelled*.
 
 ---
 
-## 6️⃣ Llaves Primarias (PK)
+## 6️. Llaves Primarias (PK)
 
 | **Tabla** | **Llave primaria** | **Descripción** |
 |------------|--------------------|----------------|
@@ -130,7 +130,7 @@ Estados posibles: *scheduled*, *played* y *cancelled*.
 
 ---
 
-## 7️⃣ Llaves Foráneas (FK)
+## 7️. Llaves Foráneas (FK)
 
 | **Tabla** | **Columna FK** | **Referencia** | **Relación** |
 |------------|----------------|----------------|---------------|
@@ -141,7 +141,7 @@ Estados posibles: *scheduled*, *played* y *cancelled*.
 
 ---
 
-## 8️⃣ Llaves Únicas (UNIQUE)
+## 8️. Llaves Únicas (UNIQUE)
 
 | **Tabla** | **Columna** | **Descripción** |
 |------------|-------------|-----------------|
@@ -151,32 +151,32 @@ Estados posibles: *scheduled*, *played* y *cancelled*.
 
 ---
 
-## 9️⃣ Diagramas Complementarios UML
+## 9️. Diagramas Complementarios UML
 
-### 🧠 Actividades
+### Actividades
 ![Actividad – Registrar Resultado](../uml/export/png/activity_registrar_resultado.png)
 
-### 🔁 Comunicación
+### Comunicación
 ![Comunicación – Registrar Resultado](../uml/export/png/communication_registrar_resultado.png)
 
-### ⏱️ Tiempo
+### Tiempo
 ![Timing – Match](../uml/export/png/timing_match.png)
 
-### 📦 Paquetes
+### Paquetes
 ![Paquetes](../uml/export/png/package.png)
 
-### ⚙️ Componentes
+### Componentes
 ![Componentes](../uml/export/png/component.png)
 
-### 🧱 Despliegue
+### Despliegue
 ![Deployment](../uml/export/png/deployment.png)
 
-### 🧰 Instalación
+### Instalación
 ![Instalación](../uml/export/png/installation.png)
 
 ---
 
-## 🔚 Conclusión
+## Conclusión
 El diseño de la base de datos del proyecto **SIGET** garantiza la integridad, trazabilidad y coherencia de la información del torneo.  
 Las relaciones entre entidades reflejan fielmente los procesos de **registro, programación y resultados**.  
 Este modelo, junto con los diagramas UML, constituye la base técnica sólida para el desarrollo futuro de la plataforma de gestión deportiva.
