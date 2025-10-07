@@ -1,6 +1,6 @@
 # Proyecto SIGET – Sistema de Información y Gestión de Torneos
 
-## 🏆 Resumen del Proyecto
+## Resumen del Proyecto
 **SIGET** es una plataforma web académica diseñada para optimizar la organización y control de torneos deportivos.  
 Su objetivo es reemplazar los procesos manuales y dispersos —como hojas de cálculo o mensajería— por un flujo digital, trazable y estructurado que abarque todo el ciclo del torneo: desde el registro de equipos y jugadores hasta la gestión de partidos, resultados y estadísticas.
 
@@ -15,25 +15,25 @@ Esta solución garantiza **integridad de datos**, **transparencia en resultados*
 
 ---
 
-## 📚 Documentación General del Proyecto
+## Documentación General del Proyecto
 **Asignatura:** Modelos y Documentación del Software  
 **Docente:** Ing. Hely Suárez Marín  
 
-📄 [Ver Documento General (Markdown)](./documentation/documentation_siget.md)  
-📊 [Ver Diagramas UML individuales](./uml/export/png/)  
+[Ver Documento General (Markdown)](./documentation/documentation_siget.md)  
+[Ver Diagramas UML individuales](./uml/export/png/)  
 
 ---
 
-## 🗄️ Documentación de la Base de Datos
+## Documentación de la Base de Datos
 **Asignatura:** Bases de Datos  
 **Docente:** Ing. Hely Suárez Marín  
 
-📄 [Ver Documentación de la BD (Markdown)](./db/models/Modelo_ER.md)  
-📘 [Ver Modelo Relacional y Normalización](./db/models/Modelo_Relacional.md)
+[Ver Documentación de la BD (Markdown)](./db/models/Modelo_ER.md)  
+[Ver Modelo Relacional y Normalización](./db/models/Modelo_Relacional.md)
 
 ---
 
-## 👥 Autores
+## Autores
 - **Nelly Fabiola Cano Oviedo**  
 - **Néstor Iván Granados Valenzuela**
 
