@@ -7,7 +7,7 @@ Ing. Hely Suárez Marín
 - Nelly Fabiola Cano Oviedo  
 - Néstor Iván Granados Valenzuela  
 
-**Fecha:** Octubre / 9 / 2025  
+**Fecha:** Octubre / 7 / 2025  
 
 ---
 
