@@ -10,7 +10,7 @@
 
 ---
 
-## 🧠 Problema
+## Problema
 Los torneos deportivos académicos y aficionados suelen gestionar su información con hojas de cálculo, formularios dispersos o mensajería instantánea. A medida que crece el número de equipos, jugadores y partidos, también aumenta la complejidad operativa: programar encuentros sin choques de horario, asignar árbitros disponibles, registrar resultados de forma confiable y consultar estadísticas básicas.  
 
 Este manejo manual y descentralizado provoca errores de transcripción (marcadores mal digitados, equipos repetidos), inconsistencia de datos (jugadores duplicados, árbitros inhabilitados asignados por error) y poca trazabilidad (no queda claro quién cambió un resultado ni cuándo).  
@@ -19,7 +19,7 @@ En consecuencia, se afectan la transparencia del torneo y la experiencia de part
 
 ---
 
-## 💡 Solución
+## Solución
 Se propone una **plataforma web simple y centralizada** de Gestión de Torneos Deportivos que estandarice:
 
 1. Registro de equipos y jugadores.  
@@ -34,20 +34,20 @@ Toda la información queda persistida en una **base de datos relacional** con **
 
 ---
 
-## 🚀 Impacto
+## Impacto
 1. **Eficiencia y trazabilidad:** Disminuye tiempos de registro y elimina duplicidades. Cada cambio queda asociado a un usuario/fecha, reforzando el control.  
 2. **Transparencia del torneo:** Estadísticas generadas a partir de resultados verificables en la BD; se reducen conflictos por errores humanos.  
 3. **Escalabilidad académica:** La documentación (UML + BD normalizada) deja una base sólida para futuras extensiones (múltiples torneos, fases, sanciones, tablas de posiciones).
 
 ---
 
-## 1️⃣ Resumen del Problema
+## 1️. Resumen del Problema
 El manejo manual y distribuido de información en torneos deportivos provoca **inconsistencias**, **pérdida de trazabilidad** y **dificulta estadísticas confiables**.  
 Esto impacta la calidad organizativa y la experiencia de equipos y árbitros.
 
 ---
 
-## 2️⃣ Posible solución (plataforma mínima de torneo)
+## 2️. Posible solución (plataforma mínima de torneo)
 Se propone un **MVP** que cubra el ciclo esencial:  
 **inscripción de equipos/jugadores → programación y arbitraje → registro de resultados → estadísticas**.  
 La solución se documenta completamente (UML + BD) para una implementación posterior.
@@ -75,12 +75,12 @@ La solución se documenta completamente (UML + BD) para una implementación post
 
 ---
 
-## 3️⃣ Descripción general del proceso
+## 3️. Descripción general del proceso
 El organizador registra equipos/jugadores y árbitros.  
 Luego programa cada partido, asigna un árbitro y, al finalizar el encuentro, registra el resultado.  
 Las estadísticas se consultan en cualquier momento con base en los resultados ya cerrados (*played*).
 
-### 🗺️ Mapa de Procesos
+### Mapa de Procesos
 ![Mapa de Procesos](../uml/export/png/MapadeProcesos.png)  
 **Propósito.** Visualizar el flujo global de registro, programación y resultados.  
 **Qué representa.** Etapas: planeación (registro), operación (programación/resultado), control (estadísticas).  
@@ -90,13 +90,13 @@ Las estadísticas se consultan en cualquier momento con base en los resultados y
 
 ---
 
-## 4️⃣ Revisión / Verificabilidad
+## 4️. Revisión / Verificabilidad
 Se contrastaron flujos básicos con prácticas reales: **planillas de papel** o **mensajes dispersos** suelen generar conflictos por falta de control de versiones y responsabilidades.  
 El modelo propuesto corrige esto mediante **integridad referencial**, **reglas de negocio** y **vistas** para estadísticas.
 
 ---
 
-## 5️⃣ Diagramas UML realizados
+## 5️. Diagramas UML realizados
 
 ### 5.1 Casos de Uso
 ![Casos de Uso](../uml/export/png/usecase.png)  
@@ -219,7 +219,7 @@ El modelo propuesto corrige esto mediante **integridad referencial**, **reglas d
 
 ---
 
-## 🏁 Conclusión
+## Conclusión
 El diseño de la base de datos del proyecto **SIGET** garantiza la **integridad, trazabilidad y coherencia** de la información del torneo.  
 Las relaciones entre entidades reflejan fielmente los procesos de **registro, programación y resultados**.  
 Cada diagrama UML respalda una perspectiva distinta del sistema, consolidando una documentación académica completa y funcional.
