@@ -1,16 +1,27 @@
-# Editor/OS
+# ============================================
+# 🧠 CONFIGURACIÓN BÁSICA
+# ============================================
+
+# Archivos del sistema y del editor
 .DS_Store
 Thumbs.db
 .vscode/
 .idea/
 
-# Node/Java cache (por si se usa en herramientas)
+# ============================================
+# ⚙️ CACHE Y TEMPORALES
+# ============================================
 node_modules/
 *.log
+*.tmp
 
-# Exportados
+# ============================================
+# 📘 EXPORTADOS Y DOCUMENTACIÓN DERIVADA
+# ============================================
 uml/export/
 docs/pdf/
 
-# Temporal
-*.tmp
+# ============================================
+# 🗄️ IGNORAR COMPLETAMENTE LA BASE DE DATOS
+# ============================================
+db/
