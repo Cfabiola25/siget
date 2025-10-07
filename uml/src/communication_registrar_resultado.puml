@@ -1,0 +1,14 @@
+@startuml
+title Comunicación: Registrar Resultado
+object Admin
+object UI
+object MatchService
+object RepoMatches
+
+Admin -> UI : datos de resultado
+UI -> MatchService : registerResult()
+MatchService -> RepoMatches : find()
+RepoMatches -> MatchService : Match
+MatchService -> RepoMatches : update()
+MatchService -> UI : ok
+@enduml

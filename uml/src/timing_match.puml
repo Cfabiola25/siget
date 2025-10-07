@@ -1,0 +1,30 @@
+@startuml
+title Diagrama de Tiempo (Timing): Ciclo de un Partido
+
+' Línea de tiempo concisa para estado del partido y registro de resultado
+concise "Partido" as P
+concise "UI/Servicio" as S
+
+@0
+P is scheduled
+S is idle
+
+@10
+S is "programando"
+P is scheduled
+
+@20
+S is idle
+P is scheduled
+
+@70
+S is "registrando resultado"
+P is "en juego"
+
+@80
+S is idle
+P is played
+
+@90
+P is archived
+@enduml

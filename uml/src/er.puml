@@ -1,0 +1,56 @@
+@startuml
+' ER estilo simple usando entidades
+title Modelo ER - Torneos
+entity "teams" as T {
+  * id : INT
+  --
+  name : VARCHAR
+  coach_name : VARCHAR
+  city : VARCHAR
+  created_at : DATETIME
+}
+entity "players" as P {
+  * id : INT
+  --
+  team_id : INT FK
+  first_name : VARCHAR
+  last_name : VARCHAR
+  position : VARCHAR
+  jersey_number : INT
+  birthdate : DATE
+  email : VARCHAR
+  active : BOOLEAN
+  created_at : DATETIME
+}
+entity "referees" as R {
+  * id : INT
+  --
+  first_name : VARCHAR
+  last_name : VARCHAR
+  license_code : VARCHAR (UNIQUE)
+  category : VARCHAR
+  phone : VARCHAR
+  email : VARCHAR (UNIQUE)
+  active : BOOLEAN
+  created_at : DATETIME
+}
+entity "matches" as M {
+  * id : INT
+  --
+  home_team_id : INT FK
+  away_team_id : INT FK
+  referee_id : INT FK
+  match_date : DATE
+  match_time : TIME
+  venue : VARCHAR
+  status : ENUM/CHK
+  home_goals : INT
+  away_goals : INT
+  created_at : DATETIME
+}
+
+T ||--o{ P : tiene
+T ||--o{ M : home_team
+T ||--o{ M : away_team
+R ||--o{ M : dirige
+@enduml

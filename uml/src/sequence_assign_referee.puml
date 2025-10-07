@@ -1,0 +1,18 @@
+@startuml
+title Secuencia: Asignar Árbitro a Partido
+actor Admin
+participant UI
+participant "MatchService" as S
+database "RepoMatches" as RM
+database "RepoReferees" as RR
+
+Admin -> UI: seleccionar partido y árbitro
+UI -> S: assignReferee(matchId, refereeId)
+S -> RM: find(matchId)
+RM --> S: Match (status = scheduled)
+S -> RR: find(refereeId)
+RR --> S: Referee (activo)
+S -> RM: update(match.refereeId = refereeId)
+S --> UI: confirmación
+UI --> Admin: árbitro asignado
+@enduml

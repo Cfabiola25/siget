@@ -1,0 +1,15 @@
+@startuml
+title Secuencia: Registrar Resultado
+actor Admin
+participant UI
+participant "MatchService" as S
+database "RepoMatches" as RM
+
+Admin -> UI: ingresar resultado (goles)
+UI -> S: registerResult(matchId, home, away)
+S -> RM: find(matchId)
+RM --> S: Match (status=scheduled)
+S -> RM: update(status=played, homeGoals, awayGoals)
+S --> UI: ok
+UI --> Admin: resultado guardado
+@enduml

@@ -1,0 +1,32 @@
+@startuml
+title Diagrama de Objetos (Ejemplo)
+object teamLocal {
+  id = 1
+  name = "Tiburones FC"
+  city = "Cúcuta"
+}
+
+object teamVisitante {
+  id = 2
+  name = "Leones SC"
+  city = "Villa del Rosario"
+}
+
+object arbitro1 {
+  id = 10
+  licenseCode = "COL-ARB-2025-001"
+  category = "A"
+}
+
+object match1 {
+  id = 100
+  matchDate = "2025-10-15"
+  matchTime = "15:00"
+  venue = "Cancha Sintética 12 de Octubre"
+  status = scheduled
+}
+
+match1 --> teamLocal : home_team
+match1 --> teamVisitante : away_team
+match1 --> arbitro1 : referee
+@enduml

@@ -1,0 +1,16 @@
+# Editor/OS
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Node/Java cache (por si se usa en herramientas)
+node_modules/
+*.log
+
+# Exportados
+uml/export/
+docs/pdf/
+
+# Temporal
+*.tmp
