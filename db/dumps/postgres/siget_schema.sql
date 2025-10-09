@@ -1,6 +1,27 @@
+-- ==========================================
+-- CREACIÓN DE LA BASE DE DATOS SIGET
+-- ==========================================
+
+-- Conéctate como usuario postgres en psql
+-- o usa pgAdmin y ejecuta esto:
+
+CREATE DATABASE siget_db
+  WITH 
+  OWNER = postgres
+  ENCODING = 'UTF8'
+  LC_COLLATE = 'es_CO.UTF-8'
+  LC_CTYPE = 'es_CO.UTF-8'
+  TABLESPACE = pg_default
+  CONNECTION LIMIT = -1;
+
+-- Esto crea una base llamada siget_db.
+
+-- Ahora conéctate a ella:
+\c siget_db;
+
 -- SIGET – Esquema base (DDL) – PostgreSQL 14+
 -- Contiene: TABLAS, TIPOS, CONSTRAINTS, ÍNDICES y VISTAS
--- No crea la base de datos; ejecute en la BD elegida (ej. tournament_db)
+-- No crea la base de datos; ejecute en la BD elegida (ej. siget_db)
 
 BEGIN;
 
