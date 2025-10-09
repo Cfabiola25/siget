@@ -22,16 +22,7 @@ Esta solución garantiza **integridad de datos**, **transparencia en resultados*
 [Ver Documento General (Markdown)](./documentation/documentation_siget.md)  
 [Ver Diagramas UML individuales](./uml/export/png/)  
 
----
 
-## Documentación de la Base de Datos
-**Asignatura:** Bases de Datos  
-**Docente:** Ing. Hely Suárez Marín  
-
-[Ver Documentación de la BD (Markdown)](./db/models/Modelo_ER.md)  
-[Ver Modelo Relacional y Normalización](./db/models/Modelo_Relacional.md)
-
----
 
 ## Autores
 - **Nelly Fabiola Cano Oviedo**  
