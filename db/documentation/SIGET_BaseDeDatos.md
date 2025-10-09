@@ -46,7 +46,7 @@ Cada entidad representa un actor o componente esencial del torneo.
 
 ### 📊 Diagrama ER
 
-[Diagrama Entidad–Relación](../images/png/er_siget.png)
+[Diagrama Entidad–Relación](../images/ER/er_siget.png)
 
 ---
 
