@@ -18,8 +18,17 @@ node_modules/
 # ================================
 /documentation/
 /uml/
-/dumps/mysql/
 
-# (si quieres seguir ignorando solo los exportados)
+# ================================
+# 💾 DUMPS Y EXPORTS
+# ================================
+# Ignorar solo la carpeta MySQL (mantener PostgreSQL visible)
+db/dumps/mysql/
+
+# Si hay otras rutas de exportación o PDFs
 uml/export/
 docs/pdf/
+
+# (Opcional: ignorar archivos temporales o backups SQL)
+*.bak
+*.sql~
