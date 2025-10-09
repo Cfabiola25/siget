@@ -1,0 +1,57 @@
+@startuml
+title Diagrama de Clases
+class Team {
+  +id: int
+  +name: string
+  +coachName: string
+  +city: string
+  +createdAt: datetime
+}
+
+class Player {
+  +id: int
+  +firstName: string
+  +lastName: string
+  +position: string
+  +jerseyNumber: int
+  +birthdate: date
+  +email: string
+  +active: boolean
+  +createdAt: datetime
+}
+
+class Referee {
+  +id: int
+  +firstName: string
+  +lastName: string
+  +licenseCode: string
+  +category: string
+  +phone: string
+  +email: string
+  +active: boolean
+  +createdAt: datetime
+}
+
+enum MatchStatus {
+  scheduled
+  played
+  cancelled
+}
+
+class Match {
+  +id: int
+  +matchDate: date
+  +matchTime: time
+  +venue: string
+  +status: MatchStatus
+  +homeGoals: int
+  +awayGoals: int
+  +createdAt: datetime
+}
+
+Team "1" o-- "0..*" Player : tiene >
+Match "1" --> "1" Team : home_team
+Match "1" --> "1" Team : away_team
+Match "1" --> "1" Referee : dirigido_por
+
+@enduml
