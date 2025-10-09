@@ -18,6 +18,7 @@ node_modules/
 # ================================
 /documentation/
 /uml/
+/dumps/mysql/
 
 # (si quieres seguir ignorando solo los exportados)
 uml/export/
