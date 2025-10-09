@@ -63,7 +63,7 @@ El **modelo lógico** traduce las entidades y relaciones del ER a tablas con lla
 
 ### ⚙️ Esquema Relacional
 
-[Esquema Relacional](../images/png/tournament_db - public.png)
+[Esquema Relacional](../images/png/tournament_db_public.png)
 
 ---
 
