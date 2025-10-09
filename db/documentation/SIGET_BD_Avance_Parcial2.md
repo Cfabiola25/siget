@@ -82,7 +82,9 @@ El **diagrama de casos de uso** muestra las acciones principales de los distinto
 - El **Árbitro** ingresa los resultados y estados del encuentro.  
 - Los **Jugadores** consultan los datos y estadísticas de su equipo.
 
-📎 Archivo: `../images/png/usecase.png`
+📎 Archivo: 
+
+[Diagrama Casos de Uso](../images/png/usecase.png)
 
 ---
 
@@ -92,7 +94,9 @@ El **diagrama de clases** representa las entidades del sistema y sus relaciones 
 Muestra clases como **Equipo**, **Jugador**, **Árbitro**, **Partido** y sus asociaciones a través de llaves foráneas.  
 Este modelo refleja directamente la estructura lógica del esquema `tournament_db`.
 
-📎 Archivo: `../images/png/class.png`
+📎 Archivo: 
+
+[Diagrama de Clases](../images/png/class.png)
 
 ---
 
@@ -101,7 +105,9 @@ Este modelo refleja directamente la estructura lógica del esquema `tournament_d
 El **diagrama de estados** representa el ciclo de vida de un partido.  
 Inicia en `Programado (scheduled)`, puede cambiar a `Jugado (played)` o `Cancelado (cancelled)`, y actualiza las estadísticas según los resultados.
 
-📎 Archivo: `../images/png/state_match.png`
+📎 Archivo: 
+
+[Diagrama de Estado](../images/png/state_match.png)
 
 ---
 
