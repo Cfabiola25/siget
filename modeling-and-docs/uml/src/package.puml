@@ -1,0 +1,30 @@
+@startuml
+title Paquetes (Capas)
+package UI {
+  [WebApp]
+}
+package Application {
+  [MatchService]
+  [TeamService]
+  [RefereeService]
+  [PlayerService]
+}
+package Domain {
+  [Team]
+  [Player]
+  [Referee]
+  [Match]
+}
+package Infrastructure {
+  [RepoTeams]
+  [RepoPlayers]
+  [RepoReferees]
+  [RepoMatches]
+  [DB Connection]
+}
+
+UI ..> Application
+Application ..> Domain
+Application ..> Infrastructure
+Infrastructure ..> Domain
+@enduml

@@ -1,0 +1,16 @@
+@startuml
+title Despliegue / Instalación
+node "Cliente" {
+  artifact "Navegador Web"
+}
+node "Servidor de Aplicaciones" {
+  component "API Torneos"
+  artifact "App (container)"
+}
+node "Servidor de BD" {
+  database "DB Torneos"
+}
+
+"Navegador Web" --> "API Torneos" : HTTP/HTTPS
+"API Torneos" --> "DB Torneos" : TCP 5432/3306
+@enduml

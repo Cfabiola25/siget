@@ -1,0 +1,8 @@
+@startuml
+title Estados: Partido
+[*] --> scheduled
+scheduled --> played : registrar resultado
+scheduled --> cancelled : cancelar
+played --> [*]
+cancelled --> [*]
+@enduml

@@ -1,0 +1,95 @@
+# ================================
+# 📦 CONFIGURACIÓN BÁSICA
+# ================================
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+
+# Configuraciones locales de IDEs
+.vscode/
+.idea/
+*.code-workspace
+
+# ================================
+# ⚙️ CACHE Y DEPENDENCIAS
+# ================================
+node_modules/
+vendor/
+.env
+.env.*
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ================================
+# 🧰 ARCHIVOS TEMPORALES / COMPILADOS
+# ================================
+*.log
+*.tmp
+*.temp
+*.bak
+*.old
+*.swp
+*.swo
+*.zip
+*.rar
+*.7z
+*.tar.gz
+
+# ================================
+# 🗃️ BASES DE DATOS Y BACKUPS
+# ================================
+# Ignora backups automáticos y temporales,
+# pero permite dumps oficiales versionados.
+*.sql~
+*.dump
+*.backup
+!database/db/dumps/
+!database/db/dumps/**
+
+# ================================
+# 🖼️ IMÁGENES Y DOCUMENTACIÓN
+# ================================
+# NO ignorar imágenes ni documentación del proyecto.
+!database/images/
+!database/images/**
+!modeling-and-docs/images/
+!modeling-and-docs/images/**
+!documentation/
+!documentation/**
+!*.md
+!*.puml
+!*.png
+!*.jpg
+!*.jpeg
+!*.pdf
+!*.docx
+
+# ================================
+# ⚙️ BUILD / CACHE LOCAL
+# ================================
+dist/
+build/
+coverage/
+.cache/
+__pycache__/
+*.pyc
+
+# ================================
+# 🚫 EXCEPCIONES ESPECIALES
+# ================================
+# NO ignorar los scripts ni los archivos de configuración SQL o UML
+!database/
+!database/**
+!modeling-and-docs/
+!modeling-and-docs/**
+!*.sql
+!*.uml
+!*.puml
+
+# ================================
+# ✅ MANTENER ORGANIZADO
+# ================================
+# Permite todo lo útil del proyecto académico,
+# excluyendo solo contenido generado automáticamente.

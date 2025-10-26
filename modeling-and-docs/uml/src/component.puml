@@ -1,0 +1,15 @@
+@startuml
+title Componentes
+component "API Torneos" as API
+component "Módulo Partidos" as CMP
+component "Módulo Equipos" as CTE
+component "Módulo Árbitros" as CAR
+database "DB Torneos" as DB
+
+API -- CMP
+API -- CTE
+API -- CAR
+CMP .. DB
+CTE .. DB
+CAR .. DB
+@enduml
