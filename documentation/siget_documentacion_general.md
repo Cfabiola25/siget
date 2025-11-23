@@ -1,139 +1,158 @@
-# 🏆 SIGET – Sistema de Información y Gestión de Torneos
+# 🏆 **SIGET – Sistema de Información y Gestión de Torneos**
 
-**Proyecto Académico Integrado – Bases de Datos / Modelos y Documentación del Software**  
-**Institución:** Fundación de Estudios Superiores Comfanorte – FESC  
-**Docente:** Ing. Hely Suárez Marín  
-**Integrantes:**  
-- Nelly Fabiola Cano Oviedo  
-- Néstor Iván Granados Valenzuela  
-**Fecha:** Octubre / 2025  
+**Proyecto Académico Integrado – Bases de Datos / Modelos y Documentación del Software**
 
----
+**Institución:** Fundación de Estudios Superiores Comfanorte – FESC
+**Docente:** Ing. Hely Suárez Marín
 
-## 📘 Introducción
+**Integrantes:**
 
-El proyecto **SIGET (Sistema de Información y Gestión de Torneos)** tiene como propósito diseñar y documentar una solución informática que optimice la organización de torneos deportivos internos en entornos académicos.
+* Nelly Fabiola Cano Oviedo
+* Néstor Iván Granados Valenzuela
 
-Actualmente, muchas instituciones gestionan los torneos mediante hojas de cálculo o mensajes dispersos, lo que genera **duplicidad de datos, errores de registro y pérdida de trazabilidad**.  
-SIGET busca **centralizar la información** y garantizar una administración ordenada, confiable y verificable de equipos, jugadores, árbitros y resultados.
+**Fecha:** Noviembre / 2025
 
 ---
 
-## 🎯 Objetivos
+# 📘 1. Introducción
 
-### Objetivo general
-Diseñar y documentar un sistema relacional y modular para la **gestión digital de torneos deportivos**, integrando el modelado de datos, reglas de negocio y diagramas UML bajo buenas prácticas de documentación técnica.
+El proyecto **SIGET** (Sistema de Información y Gestión de Torneos) tiene como finalidad diseñar, estructurar y documentar una solución informática que permita optimizar la gestión de torneos deportivos en ambientes académicos.
 
-### Objetivos específicos
-1. Modelar las entidades y relaciones mediante **diagramas UML** (casos de uso, clases, estados y secuencias).  
-2. Implementar la **base de datos relacional en PostgreSQL**, aplicando restricciones, llaves y vistas estadísticas.  
-3. Documentar los procesos y artefactos del sistema en formato **Markdown**, para facilitar su mantenimiento y evaluación.  
-4. Garantizar la **coherencia y trazabilidad** entre el modelo conceptual, lógico y físico.  
+Hoy en día, la mayoría de instituciones registran información deportiva mediante hojas de cálculo, documentos dispersos o mensajería instantánea. Este enfoque genera:
 
----
+* Duplicidad de datos
+* Errores en resultados
+* Falta de trazabilidad
+* Dificultad para generar estadísticas confiables
 
-## 🧩 Alcance del Proyecto
-
-El sistema SIGET cubre el flujo básico de un torneo académico:
-
-1. Registro de **equipos, jugadores y árbitros**.  
-2. Programación de **partidos** (fecha, hora, sede y árbitro asignado).  
-3. Registro de **resultados** y actualización de estadísticas automáticas.  
-4. Consulta de **reportes y métricas** (partidos jugados, victorias, empates, derrotas).  
-
-🔸 Se aborda hasta el nivel de **modelado y base de datos**, con vistas y documentación técnica completa.  
-🔸 La capa de aplicación (frontend/backend) se deja como fase posterior del desarrollo.
+SIGET propone una **plataforma centralizada**, respaldada por un modelo de datos sólido y una documentación UML coherente, que permita administrar equipos, jugadores, árbitros, partidos y resultados de forma clara, trazable y verificable.
 
 ---
 
-## ⚙️ Arquitectura General
+# 🎯 2. Objetivos
 
-El proyecto se organiza en tres componentes principales:
+## 2.1 Objetivo General
 
-| Módulo | Descripción | Documentación |
-|---------|--------------|---------------|
-| **Base de Datos** | Estructura relacional, restricciones, normalización y vistas. | [📄 Ver documentación de BD](../database/documentation/siget_base_de_datos.md) |
-| **Modelado y UML** | Diagramas de clases, casos de uso, secuencia, estados y despliegue. | [📘 Ver documentación UML](../modeling-and-docs/documentation/documentacion_siget.md) |
-| **Documentación General** | Contexto, objetivos, alcance y enlaces entre módulos. | *(este documento)* |
+Diseñar y documentar un sistema relacional y modular para la **gestión digital de torneos deportivos**, garantizando integridad, coherencia y trazabilidad mediante diagramas UML, modelo relacional y documentación técnica.
+
+## 2.2 Objetivos Específicos
+
+1. Modelar actores, procesos y entidades mediante **diagramas UML** (casos de uso, clases, estados, actividades, secuencias, componentes y despliegue).
+2. Construir una **base de datos relacional** en PostgreSQL con restricciones, llaves, índices y vistas estadísticas.
+3. Documentar todo el proyecto en formato **Markdown**, de forma clara y navegable.
+4. Mantener coherencia entre el modelo conceptual, lógico y físico, asegurando trazabilidad documental.
 
 ---
 
-## 🧱 Estructura del Proyecto
+# 🧩 3. Alcance del Proyecto
+
+El alcance del MVP desarrollado cubre:
+
+1. Registro de **equipos, jugadores y árbitros**.
+2. Programación de **partidos** con fecha, hora, sede y árbitro asignado.
+3. Registro de **resultados** y actualización de estadísticas básicas.
+4. Consulta de **reportes**, estados y métricas deportivas.
+5. Modelado completo (UML + BD) para permitir una futura implementación de la aplicación web.
+
+🔹 *La fase de desarrollo (frontend/backend) queda fuera del alcance actual, enfocándose exclusivamente en análisis, diseño y documentación técnica.*
+
+---
+
+# ⚙️ 4. Arquitectura General del Proyecto
+
+El repositorio SIGET se organiza en tres bloques documentales:
+
+| Módulo                    | Descripción                                       | Documento                                                |
+| ------------------------- | ------------------------------------------------- | -------------------------------------------------------- |
+| **Base de Datos**         | Estructura relacional, normalización y vistas SQL | `database/documentation/siget_base_de_datos.md` [📄 Ver documentación de BD](../database/documentation/siget_base_de_datos.md)          |
+| **Modelado UML**          | Diagramas del sistema y su justificación          | `modeling-and-docs/documentation/documentacion_siget.md` [📘 Ver documentación UML](../modeling-and-docs/documentation/documentacion_siget.md) |
+| **Documentación General** | Objetivos, alcance y vínculos entre módulos       | *este documento*                                         |
+
+---
+
+# 🧱 5. Estructura del Repositorio
 
 ```plaintext
 SIGET/
 │
-├── 📁 database/
-│   ├── 📁 documentation/         → Documentación de la base de datos
-│   ├── 📁 db/dumps/              → Archivos SQL (PostgreSQL)
-│   └── 📁 images/                → Diagramas ER y vistas relacionales
+├── database/
+│   ├── documentation/           → Documentación de la base de datos
+│   ├── db/dumps/                → SQL del esquema y datos
+│   └── images/                  → ER y relacional
 │
-├── 📁 modeling-and-docs/
-│   ├── 📁 documentation/         → Documentación UML
-│   ├── 📁 uml/                   → Archivos fuente (.puml) y exportados (.png)
-│   └── 📁 releases/docs/         → Documentos finales (PDF y DOCX)
+├── modeling-and-docs/
+│   ├── documentation/           → Documentación UML
+│   ├── uml/                     → .puml + imágenes exportadas
+│   └── releases/docs/           → Archivos finales PDF/DOCX
 │
-└── 📁 documentation/
-    └── siget_documentacion_general.md  → Documento principal (este)
+└── documentation/
+    └── siget_documentacion_general.md
 ```
 
 ---
 
-## 🔗 Relación entre Componentes
+# 🔗 6. Relación entre Componentes del Sistema
 
-| Elemento | Propósito | Ejemplo |
-|-----------|------------|----------|
-| **Entidad** | Representa una tabla o clase del sistema. | `Team`, `Player`, `Referee`, `Match` |
-| **Regla de Negocio** | Define restricciones o validaciones. | “Un partido no puede tener el mismo equipo como local y visitante.” |
-| **Vista** | Genera información derivada o consolidada. | `vw_team_stats` |
-| **Diagrama UML** | Explica visualmente los procesos del sistema. | Casos de Uso, Clases, Estados, Secuencia |
+| Elemento             | Rol dentro del proyecto                                           |
+| -------------------- | ----------------------------------------------------------------- |
+| **Entidad**          | Representa una tabla o clase del dominio (`Team`, `Player`, etc.) |
+| **Regla de negocio** | Define restricciones o validaciones del sistema                   |
+| **Vista SQL**        | Genera datos derivados (ej. estadísticas)                         |
+| **Diagrama UML**     | Explica procesos, estructura o interacción del sistema            |
 
----
-
-## 📚 Metodología de Desarrollo
-
-El proyecto sigue un enfoque **incremental y documental**, que combina:
-1. **Análisis del dominio** (revisión de procesos manuales actuales).  
-2. **Modelado UML** (para representar procesos y entidades).  
-3. **Diseño lógico-relacional** (normalización y restricciones).  
-4. **Documentación técnica en Markdown** (autoexplicativa, enlazada y versionable con Git).  
+Esta relación garantiza coherencia entre **UML → BD → Documentación**.
 
 ---
 
-## 🧩 Herramientas Utilizadas
+# 📚 7. Metodología de Desarrollo
 
-| Categoría | Herramienta | Propósito |
-|------------|--------------|------------|
-| **Modelado UML** | PlantUML | Creación de diagramas y vistas exportadas. |
-| **Gestión de BD** | PostgreSQL 14+ | Implementación de esquema y datos de prueba. |
-| **Documentación** | Markdown (.md) | Estandarización y presentación técnica. |
-| **Control de Versiones** | Git y GitHub | Seguimiento y sincronización del trabajo. |
+El proyecto adoptó un enfoque **incremental, documentado y basado en buenas prácticas**, compuesto por:
 
----
-
-## 📈 Resultados Esperados
-
-- Modelo de datos **normalizado** y funcional.  
-- Documentación **clara y trazable** entre niveles (UML ↔ BD).  
-- Diagramas coherentes con las reglas del sistema.  
-- Entregable académico listo para evaluación o extensión futura.  
+1. **Levantamiento del dominio** mediante análisis del proceso real.
+2. **Modelado UML**, para representar de forma visual actores, entidades, procesos y flujos.
+3. **Diseño relacional**, con normalización hasta 3FN.
+4. **Documentación en Markdown**, permitiendo control de versiones y trazabilidad.
 
 ---
 
-## ✅ Conclusiones
+# 🧩 8. Herramientas Utilizadas
 
-El proyecto **SIGET** demuestra la importancia de integrar el **modelado visual (UML)** con el **diseño relacional (SQL)** dentro de un mismo flujo académico.  
-La documentación consolidada facilita la comprensión del sistema, su mantenimiento y su futura implementación como aplicación web.  
-
-> 🧠 Este conjunto de documentos constituye la base formal del proyecto SIGET y su arquitectura de información.
-
----
-
-## 📎 Documentos Relacionados
-
-- [📘 Base de Datos](../database/documentation/siget_base_de_datos.md)  
-- [📗 Modelado y UML](../modeling-and-docs/documentation/documentacion_siget.md)
+| Categoría      | Herramienta    | Función                          |
+| -------------- | -------------- | -------------------------------- |
+| Modelado UML   | PlantUML       | Generación de diagramas formales |
+| Base de Datos  | PostgreSQL 14+ | Implementación del esquema       |
+| Documentación  | Markdown (.md) | Estandarización y reutilización  |
+| Versionamiento | Git + GitHub   | Control del proyecto             |
 
 ---
 
-© 2025 · **FESC – Facultad de Ingeniería de Software** · Proyecto SIGET
+# 📈 9. Resultados Obtenidos
+
+* Modelo relacional **coherente**, con PK, FK, CHECK y UNIQUE.
+* Diagramas UML **alineados a la base de datos** y a las reglas de negocio.
+* Documentación completa, clara y estructurada.
+* Vistas SQL para estadísticas verificables.
+* Repositorio organizado para facilitar evaluación y mantenimiento.
+
+---
+
+# 📝 10. Conclusiones
+
+El proyecto **SIGET** demuestra la importancia de integrar el análisis, modelado y diseño de datos en un marco académico sólido.
+La documentación generada constituye la **base formal del sistema** y asegura que, en fases futuras, el desarrollo web pueda implementarse siguiendo una arquitectura clara, trazable y bien fundamentada.
+
+SIGET se convierte así en un ejemplo completo de cómo un proyecto académico puede consolidarse mediante buenas prácticas de documentación y modelado.
+
+---
+
+# 📎 11. Documentos Relacionados
+
+* **Base de Datos:**
+[📄 Ver documentación de BD](../database/documentation/siget_base_de_datos.md)
+
+* **Modelado UML:**
+[📘 Ver documentación UML](../modeling-and-docs/documentation/documentacion_siget.md) 
+---
+
+© 2025 – **FESC · Facultad de Ingeniería de Software**
+Proyecto Académico SIGET

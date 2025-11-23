@@ -1,18 +1,25 @@
 @startuml
-title Secuencia: Programar Partido
-actor Admin
-participant UI
-participant "MatchService" as S
-database "RepoTeams" as RT
-database "RepoMatches" as RM
-database "RepoReferees" as RR
+title Secuencia – Programar partido
 
-Admin -> UI: solicitar programación (equipos, fecha/hora, sede)
-UI -> S: validate(equipos !=, fecha/hora)
-S -> RT: getById(home), getById(away)
-S -> RR: getById(referee)
-S -> RM: save(new Match)
-RM --> S: matchId
-S --> UI: confirmación
-UI --> Admin: partido creado
+actor Administrador
+participant "UI Web" as UI
+participant "MatchController" as Ctrl
+participant "MatchService" as Service
+database "MatchRepository / DB" as Repo
+
+Administrador -> UI: Completar formulario (nuevo partido)
+UI -> Ctrl: POST /matches (datos)
+Ctrl -> Service: validarYCrearPartido(datos)
+
+Service -> Service: validar equipos (home != away)
+Service -> Repo: crearPartido(status='scheduled')
+Repo --> Service: idMatch
+
+Service -> Repo: asignarArbitro(idMatch)
+Repo --> Service: árbitro asignado
+
+Service --> Ctrl: resultado OK (idMatch)
+Ctrl --> UI: 201 Created + mensaje
+UI --> Administrador: Confirmación
+
 @enduml

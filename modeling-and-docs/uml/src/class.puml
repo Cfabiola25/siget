@@ -1,5 +1,6 @@
 @startuml
-title Diagrama de Clases
+skinparam classAttributeIconSize 0
+
 class Team {
   +id: int
   +name: string
@@ -10,6 +11,7 @@ class Team {
 
 class Player {
   +id: int
+  +teamId: int
   +firstName: string
   +lastName: string
   +position: string
@@ -49,9 +51,23 @@ class Match {
   +createdAt: datetime
 }
 
-Team "1" o-- "0..*" Player : tiene >
+' --- Asociaciones y cardinalidades ---
+
+Team "1" -- "0..*" Player : tiene >
+Player "0..*" --> "1" Team : pertenece a >
+
 Match "1" --> "1" Team : home_team
 Match "1" --> "1" Team : away_team
-Match "1" --> "1" Referee : dirigido_por
+
+Match "0..*" --> "1" Referee : es dirigido por >
+
+Match "*" --> "1" MatchStatus : tiene estado >
+
+note right of Match
+  Restricciones:
+  - home_team != away_team
+  - homeGoals >= 0
+  - awayGoals >= 0
+end note
 
 @enduml

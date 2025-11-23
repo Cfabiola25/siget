@@ -1,16 +1,21 @@
 @startuml
-title Despliegue / Instalación
-node "Cliente" {
+title Deployment – SIGET
+
+node "Cliente\n(PC / Laptop / Móvil)" as Client {
   artifact "Navegador Web"
 }
-node "Servidor de Aplicaciones" {
-  component "API Torneos"
-  artifact "App (container)"
-}
-node "Servidor de BD" {
-  database "DB Torneos"
+
+node "Servidor de Aplicaciones\nSIGET" as App {
+  component "SIGET Web API"
+  component "Módulo Gestión Torneos"
+  component "Módulo Estadísticas"
 }
 
-"Navegador Web" --> "API Torneos" : HTTP/HTTPS
-"API Torneos" --> "DB Torneos" : TCP 5432/3306
+node "Servidor de BD\nSIGET-DB" as DB {
+  database "Motor BD"
+}
+
+Client --> App : HTTP/HTTPS
+App --> DB : Conexión SQL
+
 @enduml

@@ -1,15 +1,34 @@
 @startuml
-title Secuencia: Registrar Resultado
-actor Admin
-participant UI
-participant "MatchService" as S
-database "RepoMatches" as RM
+title Secuencia – Registrar resultado
 
-Admin -> UI: ingresar resultado (goles)
-UI -> S: registerResult(matchId, home, away)
-S -> RM: find(matchId)
-RM --> S: Match (status=scheduled)
-S -> RM: update(status=played, homeGoals, awayGoals)
-S --> UI: ok
-UI --> Admin: resultado guardado
+actor Árbitro
+participant "UI Web" as UI
+participant "MatchController" as Ctrl
+participant "MatchService" as Service
+database "MatchRepository / DB" as Repo
+database "StatsRepository / DB" as Stats
+
+Árbitro -> UI: Seleccionar partido\ningresar goles
+UI -> Ctrl: POST /matches/{id}/result
+Ctrl -> Service: registrarResultado(id, goles)
+
+Service -> Repo: obtenerPartido(id)
+Repo --> Service: partido (estado, equipos)
+
+alt estado válido y goles correctos
+  Service -> Repo: actualizarPartido(goles,\nestado='played')
+  Repo --> Service: OK
+
+  Service -> Stats: recalcularEstadísticas(id)
+  Stats --> Service: estadísticas OK
+
+  Service --> Ctrl: OK
+  Ctrl --> UI: 200 OK
+  UI --> Árbitro: Mostrar confirmación
+else error
+  Service --> Ctrl: error
+  Ctrl --> UI: 400 Error
+  UI --> Árbitro: Mostrar error
+end
+
 @enduml

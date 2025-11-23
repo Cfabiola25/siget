@@ -1,15 +1,16 @@
 @startuml
-title Componentes
-component "API Torneos" as API
-component "Módulo Partidos" as CMP
-component "Módulo Equipos" as CTE
-component "Módulo Árbitros" as CAR
-database "DB Torneos" as DB
+title Componentes – SIGET
 
-API -- CMP
-API -- CTE
-API -- CAR
-CMP .. DB
-CTE .. DB
-CAR .. DB
+component "Web Client\n(Navegador)" as Web
+component "SIGET Web API" as API
+component "Módulo Gestión Torneos" as Torneos
+component "Módulo Estadísticas" as Stats
+database "BD SIGET" as DB
+
+Web --> API : HTTP/HTTPS
+API --> Torneos
+API --> Stats
+Torneos --> DB
+Stats --> DB
+
 @enduml

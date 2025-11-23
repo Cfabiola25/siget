@@ -1,57 +1,185 @@
-# 🏆 Proyecto SIGET – Sistema de Información y Gestión de Torneos
+# 🏆 **SIGET – Sistema de Información y Gestión de Torneos**
 
-## 📘 Resumen del Proyecto
+**Proyecto Académico Integrado – Bases de Datos / Modelos y Documentación del Software**
+**Institución:** Fundación de Estudios Superiores Comfanorte – FESC
+**Docente:** Ing. Hely Suárez Marín
 
-El proyecto **SIGET** tiene como propósito desarrollar una **plataforma web centralizada** para la gestión integral de **torneos deportivos** en contextos académicos y amateurs.  
+**Integrantes:**
 
-Su objetivo principal es reemplazar los procesos manuales y dispersos (como el registro de resultados en hojas de cálculo o grupos de mensajería) por un **sistema digital trazable y organizado**, que permita registrar equipos, árbitros, partidos y resultados de forma estructurada.  
+* **Nelly Fabiola Cano Oviedo**
+* **Néstor Iván Granados Valenzuela**
 
-La plataforma se plantea inicialmente como un **Producto Mínimo Viable (MVP)** enfocado en garantizar:
-- La **trazabilidad completa** de los datos del torneo.  
-- La **integridad** en los registros de equipos y resultados.  
-- La **automatización** de estadísticas y reportes de rendimiento.  
-- La **accesibilidad** para los distintos actores (administrador, organizador, árbitro y jugador).
-
----
-
-## ⚙️ Funcionalidades Principales
-
-- Registro de equipos, jugadores y árbitros.  
-- Programación de partidos con control de horarios y árbitros.  
-- Actualización automática de estadísticas y posiciones.  
-- Control de estados de partidos (`scheduled`, `played`, `cancelled`).  
-- Consultas y reportes dinámicos de desempeño por equipo.  
+**Fecha:** Noviembre / 2025
 
 ---
 
-## 🧩 Documentación de la Base de Datos
+# 📘 **Descripción del Proyecto**
 
-📄 [Ver Documentación en Markdown](db/documentation/Documentacion_Base_BD_SIGET_v2.md)  
-🗺️ [Ver Diagrama ER](db/images/ER/er_siget.png)
+**SIGET** es un sistema académico diseñado para centralizar y optimizar la gestión de torneos deportivos en contextos educativos.
+Este repositorio reúne:
 
----
+* El **modelado UML completo**
+* La **base de datos relacional (PostgreSQL)**
+* La **documentación técnica integral**
+* La **estructura organizada del proyecto**
 
-## 🧠 Contexto Académico
-
-**Asignatura:** Bases de Datos  
-**Docente:** Ing. Hely Suárez Marín  
-**Institución:** Fundación de Estudios Superiores Comfanorte – FESC  
-
-**Integrantes:**  
-- Nelly Fabiola Cano Oviedo  
-- Néstor Iván Granados Valenzuela  
-
-📅 **Fecha:** Octubre / 2025  
+SIGET propone una solución modular y escalable que permite registrar equipos, jugadores, árbitros, programar partidos y gestionar resultados, garantizando trazabilidad y consistencia.
 
 ---
 
-## 🛠️ Tecnologías Utilizadas
+# 🎯 **Objetivo del Proyecto**
 
-- **PostgreSQL / MySQL** – Motores de base de datos relacional  
-- **PlantUML** – Diagramas UML y ER  
-- **Markdown** – Documentación técnica estructurada  
-- **VSCode** – Editor principal de desarrollo  
+Desarrollar la documentación técnica formal (UML + BD + análisis) de un sistema orientado a gestionar torneos deportivos, asegurando coherencia entre sus modelos conceptual, lógico y físico.
 
 ---
 
-✍️ *Fundación de Estudios Superiores Comfanorte – Facultad de Ingeniería de Software – 2025*
+# 🧩 **Funcionalidades del MVP**
+
+* Registro de **equipos**, **jugadores** y **árbitros**
+* Programación de **partidos** (fecha/hora/sede)
+* **Asignación de árbitros** activos
+* **Registro de resultados** con validaciones
+* Generación de **estadísticas básicas** por equipo
+* Roles: **Administrador**, **Árbitro**, **Espectador**
+
+---
+
+# 🏗️ **Arquitectura General del Repositorio**
+
+```plaintext
+SIGET/
+│
+├── database/
+│   ├── documentation/         → Documentación de BD (Markdown)
+│   ├── db/dumps/              → Esquema SQL + datos de prueba
+│   └── images/                → ERD y relacional exportado
+│
+├── modeling-and-docs/
+│   ├── documentation/         → Documentación UML consolidada
+│   ├── uml/                   → Archivos PlantUML (.puml)
+│   │     ├── src/             → Diagramas fuente
+│   │     └── export/          → Diagramas PNG/SVG
+│   └── releases/docs/         → PDFs y DOCX finales
+│
+└── documentation/
+    ├── siget_documentacion_general.md  → Documento principal
+    └── README.md                       → (este archivo)
+```
+
+---
+
+# 📊 **Diagramas UML Incluidos**
+
+Los diagramas generados en PlantUML incluyen:
+
+* Casos de Uso
+* Actividades
+* Secuencias (Programar y Registrar Resultado)
+* Comunicación
+* Clases
+* Objetos
+* Estados
+* Componentes
+* Paquetes
+* Timing
+* Deployment
+* Installation
+
+Todos se encuentran en:
+
+```
+modeling-and-docs/uml/export/
+```
+
+---
+
+# 🗄️ **Modelo de Base de Datos**
+
+Implementado en **PostgreSQL 14+**, con:
+
+* PK, FK, UNIQUE, CHECK
+* Normalización hasta **3FN**
+* Vistas para estadísticas:
+
+  * `vw_team_matches`
+  * `vw_team_stats`
+
+Archivos SQL:
+
+```
+database/db/dumps/siget_schema.sql
+database/db/dumps/siget_schema_data.sql
+```
+
+Documentación completa:
+
+```
+database/documentation/siget_base_de_datos.md
+```
+
+---
+
+# 🧱 **Tecnologías Utilizadas**
+
+| Categoría            | Herramienta  |
+| -------------------- | ------------ |
+| Modelado UML         | PlantUML     |
+| Base de Datos        | PostgreSQL   |
+| Documentación        | Markdown     |
+| Control de Versiones | Git + GitHub |
+| Editor               | VSCode       |
+
+---
+
+# 🌐 **Cómo Navegar el Proyecto**
+
+1. 🔸 **Si buscas la BD:**
+   → `database/documentation/siget_base_de_datos.md`
+
+2. 🔸 **Si buscas los diagramas UML:**
+   → `modeling-and-docs/documentation/documentacion_siget.md`
+
+3. 🔸 **Si buscas el documento general del proyecto:**
+   → `documentation/siget_documentacion_general.md`
+
+4. 🔸 **Si quieres los .puml para editar:**
+   → `modeling-and-docs/uml/src/`
+
+5. 🔸 **Si quieres los diagramas exportados:**
+   → `modeling-and-docs/uml/export/`
+
+---
+
+# 📈 **Estado del Proyecto**
+
+✔ Documentación UML completa
+✔ Modelo relacional normalizado
+✔ Scripts SQL funcionales
+✔ Documentación general consolidada
+
+---
+
+# 📎 **Documentos Clave**
+
+* 📘 **Documentación UML**
+  `modeling-and-docs/documentation/documentacion_siget.md`
+
+* 📄 **Documentación Base de Datos**
+  `database/documentation/siget_base_de_datos.md`
+
+* 📗 **Documento General del Proyecto**
+  `documentation/siget_documentacion_general.md`
+
+---
+
+# 💡 **Sobre el Proyecto**
+
+SIGET es un ejercicio académico integral que combina análisis, diseño y modelado técnico.
+Este repositorio sirve como base para implementar más adelante una aplicación web completa con autenticación, vistas avanzadas, reportes y manejo de múltiples torneos.
+
+---
+
+# © **2025 – FESC · Facultad de Ingeniería de Software**
+
+**Proyecto Académico SIGET**
+

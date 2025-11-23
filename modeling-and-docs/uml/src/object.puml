@@ -1,5 +1,14 @@
 @startuml
 title Diagrama de Objetos (Ejemplo)
+
+object match1 {
+  id = 100
+  matchDate = "2025-10-15"
+  matchTime = "15:00"
+  venue = "Cancha Sintética 12 de Octubre"
+  status = scheduled
+}
+
 object teamLocal {
   id = 1
   name = "Tiburones FC"
@@ -18,15 +27,8 @@ object arbitro1 {
   category = "A"
 }
 
-object match1 {
-  id = 100
-  matchDate = "2025-10-15"
-  matchTime = "15:00"
-  venue = "Cancha Sintética 12 de Octubre"
-  status = scheduled
-}
-
 match1 --> teamLocal : home_team
 match1 --> teamVisitante : away_team
 match1 --> arbitro1 : referee
+
 @enduml

@@ -1,30 +1,40 @@
 @startuml
-title Paquetes (Capas)
-package UI {
-  [WebApp]
-}
-package Application {
-  [MatchService]
-  [TeamService]
-  [RefereeService]
-  [PlayerService]
-}
-package Domain {
-  [Team]
-  [Player]
-  [Referee]
-  [Match]
-}
-package Infrastructure {
-  [RepoTeams]
-  [RepoPlayers]
-  [RepoReferees]
-  [RepoMatches]
-  [DB Connection]
+title Paquetes – Arquitectura lógica SIGET
+
+package "ui" {
+  class MatchController
+  class TeamController
 }
 
-UI ..> Application
-Application ..> Domain
-Application ..> Infrastructure
-Infrastructure ..> Domain
+package "application" {
+  class MatchAppService
+  class TeamAppService
+}
+
+package "domain" {
+  class Team
+  class Player
+  class Match
+  class Referee
+  enum MatchStatus
+}
+
+package "infrastructure" {
+  class MatchRepository
+  class TeamRepository
+  class PlayerRepository
+  class RefereeRepository
+}
+
+MatchController --> MatchAppService
+TeamController --> TeamAppService
+
+MatchAppService --> MatchRepository
+TeamAppService --> TeamRepository
+
+MatchRepository --> Match
+TeamRepository --> Team
+PlayerRepository --> Player
+RefereeRepository --> Referee
+
 @enduml

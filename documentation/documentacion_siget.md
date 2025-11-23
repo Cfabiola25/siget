@@ -1,208 +1,232 @@
-# Proyecto de Sistema de Gestión de Torneos Deportivos
-**Modelos y Documentación del Software**  
-**Docente:** Ing. Hely Suárez Marín  
+# 📘 **SIGET – Sistema de Gestión de Torneos**
 
-**Integrantes:**  
-- Nelly Fabiola Cano Oviedo  
-- Néstor Iván Granados Valenzuela  
+**Modelos y Documentación del Software**
+**Docente:** Ing. Hely Suárez Marín
+**Institución:** Fundación de Estudios Superiores Comfanorte – FESC
 
-**Fecha:** Octubre / 2025
+**Integrantes:**
 
----
+* Nelly Fabiola Cano Oviedo
+* Néstor Iván Granados Valenzuela
 
-## Problema
-Los torneos deportivos académicos y aficionados suelen gestionar su información con hojas de cálculo, formularios dispersos o mensajería instantánea. A medida que crece el número de equipos, jugadores y partidos, también aumenta la complejidad operativa: programar encuentros sin choques de horario, asignar árbitros disponibles, registrar resultados de forma confiable y consultar estadísticas básicas.  
-Este manejo manual y descentralizado provoca errores de transcripción (marcadores mal digitados, equipos repetidos), inconsistencia de datos (jugadores duplicados, árbitros inhabilitados asignados por error) y poca trazabilidad (no queda claro quién cambió un resultado ni cuándo). La ausencia de un modelo único limita la generación de estadísticas confiables (partidos jugados, victorias, empates, derrotas) y dificulta la rendición de cuentas. En consecuencia, se afectan la transparencia del torneo y la experiencia de participantes y organizadores.
+**Fecha:** Noviembre / 2025
 
 ---
 
-## Solución
-Se propone una **plataforma web simple y centralizada** de Gestión de Torneos Deportivos que estandarice:
+# 1. Introducción
 
-1. Registro de equipos y jugadores.  
-2. Programación de partidos (fecha/hora/sede).  
-3. Asignación de árbitros disponibles.  
-4. Registro de resultados.  
-5. Generación de estadísticas básicas por equipo.
+La gestión de torneos deportivos en contextos académicos presenta retos significativos cuando se realiza mediante métodos manuales como hojas de cálculo, formularios aislados y mensajería informal. Estos mecanismos dificultan el control de programación, la asignación de árbitros, el registro de resultados y la generación de estadísticas confiables.
 
-El acceso se realiza con roles mínimos (**Administrador, Árbitro, Espectador**) para delimitar responsabilidades y reducir errores. El sistema define **reglas de negocio** que evitan inconsistencias (por ejemplo, no se puede programar un partido con el mismo equipo como local y visitante, o cerrar un partido *played* con goles negativos). Toda la información queda persistida en una **BD relacional** con **integridad referencial**.
+El proyecto **SIGET** (Sistema de Información y Gestión de Torneos) propone una solución tecnológica centralizada para administrar todos los procesos clave del torneo, garantizando trazabilidad, integridad de los datos y organización eficiente.
+Esta documentación reúne el análisis, modelado UML y lineamientos técnicos que fundamentan el desarrollo del sistema.
 
 ---
 
-## Impacto
-1. **Eficiencia y trazabilidad:** Disminuye tiempos de registro y elimina duplicidades. Cada cambio queda asociado a un usuario/fecha, reforzando el control.  
-2. **Transparencia del torneo:** Estadísticas generadas a partir de resultados verificables en la BD; se reducen conflictos por errores humanos.  
-3. **Escalabilidad académica:** La documentación (UML + BD normalizada) deja una base sólida para futuras extensiones (múltiples torneos, fases, sanciones, tablas de posiciones).
+# 2. Problema
+
+El manejo manual y distribuido de información genera:
+
+* **Duplicidades** en jugadores, equipos o árbitros.
+* **Errores** al registrar resultados o programar partidos.
+* **Falta de trazabilidad**, impidiendo conocer quién registró qué cambios.
+* **Estadísticas poco confiables**, al depender de datos dispersos.
+* **Dificultad de coordinación**, afectando la transparencia del torneo.
+
+Estas limitaciones impactan negativamente la credibilidad, la eficiencia operativa y la experiencia de los participantes.
 
 ---
 
-## 1. Resumen del Problema
-El manejo manual y distribuido de información en torneos deportivos provoca **inconsistencias**, **pérdida de trazabilidad** y **dificulta estadísticas confiables**. Esto impacta la calidad organizativa y la experiencia de equipos y árbitros.
+# 3. Propuesta de Solución
+
+SIGET se plantea como una **plataforma web centralizada**, simple y fácil de operar, que integra todo el ciclo de gestión del torneo:
+
+1. Registro de **equipos** y **jugadores**.
+2. Registro y control de **árbitros activos**.
+3. **Programación de partidos** con fecha, hora y sede.
+4. **Asignación de árbitros** disponibles.
+5. **Registro de resultados** con validaciones.
+6. **Estadísticas automáticas** derivadas de los partidos jugados.
+
+El sistema aplica reglas de negocio que garantizan consistencia y evita errores comunes, como asignar árbitros inactivos o registrar goles negativos.
+Toda la información queda almacenada en una **base de datos relacional** con integridad referencial.
 
 ---
 
-## 2. Posible solución (plataforma mínima de torneo)
-Se propone un **MVP** que cubra el ciclo esencial: **inscripción de equipos/jugadores → programación y arbitraje → registro de resultados → estadísticas**. La solución se documenta completamente (UML + BD) para una implementación posterior.
+# 4. Impacto del Sistema
 
-### Alcance (MVP)
-- Registrar **Equipos** (nombre, ciudad/entrenador) y **Jugadores** (datos básicos y pertenencia a un equipo).  
-- Registrar **Árbitros** (licencia, contacto, estado activo).  
-- **Programar** partidos con fecha y hora, asegurando que **local ≠ visitante**.  
-- **Asignar** árbitro disponible.  
-- **Registrar** resultados (goles local/visitante) y marcar estado del partido como **played**.  
-- **Generar** estadísticas básicas: jugados, ganados, empatados y perdidos por equipo.
-
-### Actores y Funciones
-| Actor        | Funciones principales                                                                 |
-|--------------|----------------------------------------------------------------------------------------|
-| Administrador| Gestiona equipos, jugadores y árbitros; programa partidos; registra resultados; consulta estadísticas. |
-| Árbitro      | (Opcional) Confirma validez del resultado o reporta incidentes.                       |
-| Espectador   | Consulta estadísticas y resultados publicados.                                        |
-
-### Reglas clave del sistema
-- Un partido **no puede** tener el mismo equipo como local y visitante.  
-- Un partido **played** debe registrar **goles ≥ 0**.  
-- Un **árbitro inactivo** no puede asignarse.  
-- Las **estadísticas** se **derivan** de los partidos; **no** se almacenan acumuladas (evita inconsistencias).
+* **Eficiencia y control:** se reduce la carga manual y se eliminan duplicidades.
+* **Trazabilidad:** cada cambio queda asociado a un usuario y un momento específico.
+* **Transparencia:** las estadísticas del torneo se basan en datos verificables.
+* **Escalabilidad técnica:** la documentación UML y la BD normalizada permiten extender el sistema a nuevas funcionalidades.
 
 ---
 
-## 3. Descripción general del proceso
-El organizador registra equipos/jugadores y árbitros. Luego programa cada partido, asigna un árbitro y, al finalizar el encuentro, registra el resultado. Las estadísticas se consultan en cualquier momento con base en los resultados ya cerrados (*played*).
+# 5. Alcance del MVP
 
+El MVP de SIGET incluye:
+
+* Registro de equipos, jugadores y árbitros.
+* Programación de partidos (asegurando que local ≠ visitante).
+* Asignación de árbitros activos.
+* Registro de resultados con validación de goles.
+* Generación de estadísticas básicas: jugados, ganados, empatados, perdidos.
+* Roles: Administrador, Árbitro (opcional), Espectador.
+
+---
+
+# 6. Descripción General del Proceso
+
+El flujo operativo del torneo en SIGET se desarrolla así:
+
+1. Se registran los equipos, jugadores y árbitros.
+2. Se programan los partidos con su respectiva información.
+3. Se asignan árbitros activos.
+4. Tras el encuentro, el árbitro o administrador registra los goles.
+5. El sistema actualiza estadísticas y tabla de posiciones.
+
+**Mapa de procesos:**
 [Mapa de Procesos](../../modeling-and-docs/uml/export/mapa_de_procesos.png)
----
-
-## 4. Revisión / Verificabilidad
-Se contrastaron flujos básicos con prácticas reales: **planillas de papel** o **mensajes dispersos** suelen generar conflictos por falta de control de versiones y responsabilidades. El modelo propuesto corrige esto mediante **integridad referencial**, **reglas de negocio** y **vistas** para estadísticas.
 
 ---
 
-## 5. Diagramas UML realizados
+# 7. Verificación del Modelo
 
-### 5.1 Casos de Uso
-- **Propósito.** Mostrar, desde la perspectiva del usuario, **qué** funcionalidades ofrece el sistema, sin entrar en detalles técnicos.  
-- **Qué representa aquí.** Tres actores: **Administrador** (gestión y operación), **Árbitro** (opcional para validación/observaciones) y **Espectador** (consulta). Casos clave: *Gestionar Equipos*, *Gestionar Jugadores*, *Gestionar Árbitros*, *Programar Partido*, *Asignar Árbitro*, *Registrar Resultado* y *Consultar Estadísticas*. *Programar Partido* **incluye** *Asignar Árbitro*.  
-- **Cómo leerlo.** Las líneas conectan actores con casos que pueden ejecutar; estereotipos **include/extend** clarifican dependencias.  
-- **Razón de diseño.** Enfocado en un **MVP** claro para calificar académicamente; evita casos fuera de alcance (inscripciones online, sanciones).  
-- **Relación con BD / reglas.** Cada caso justifica entidades y restricciones: *Registrar Resultado* exige `status='played'` y `home_goals/away_goals ≥ 0`.
+Durante la investigación se contrastaron los flujos manuales tradicionales (planillas, chats, fotos de pizarrón, etc.) con el modelo sistemático de SIGET.
+Los principales problemas detectados—errores de transcripción, falta de control de versiones y pérdida de información—se resuelven mediante:
+
+* Integridad referencial
+* Reglas de negocio
+* Validaciones
+* Vistas estadísticas derivadas
+* Trazabilidad en el sistema
+
+---
+
+# 8. Diagramas UML del Sistema
+
+## 5.1 Casos de Uso
+
+* **Propósito:** mostrar las funcionalidades del sistema desde la perspectiva de los usuarios.
+* **Representación:**
+
+  * *Administrador:* gestiona entidades, programa partidos, asigna árbitros y registra resultados.
+  * *Árbitro:* registra resultados y consulta datos.
+  * *Espectador:* consulta estadísticas.
+* **Aspectos clave:** *Programar Partido* incluye *Asignar Árbitro*.
+* **Reglas:** goles ≥ 0, estado scheduled → played.
 
 [Casos de Uso](../../modeling-and-docs/uml/export/usecase.png)
 
 ---
 
-### 5.2 Actividades (Registrar Resultado)
-- **Propósito.** Describir el **flujo operativo** paso a paso con decisiones explícitas.  
-- **Qué representa.** Inicia con *matchId* y goles; verifica existencia del partido y que su estado sea **scheduled**; valida goles ≥ 0; actualiza a **played** y guarda marcadores. Si el partido no existe o ya no está en *scheduled*, se rechaza.  
-- **Cómo leerlo.** Actividades (rectángulos), decisiones (rombos), flujo (flechas).  
-- **Razón de diseño.** Foco en la **validación previa** al cierre del partido para garantizar consistencia del torneo.  
-- **Relación con BD / reglas.** Cambia `matches.status` y `home_goals/away_goals`; el **CHECK** evita negativos; la app fuerza completar goles para *played*.
+## 5.2 Actividad – Registrar Resultado
+
+* **Propósito:** representar el flujo para cerrar un partido.
+* **Flujo:** verificación de estado → validación de goles → actualización a *played*.
+* **Reglas:** no se permiten goles negativos.
+* **Resultado:** actualización de estadísticas.
 
 [Diagrama de Actividades](../../modeling-and-docs/uml/export/activity_registrar_resultado.png)
 
 ---
 
-### 5.3 Secuencia (Programar Partido)
-- **Propósito.** Representar el **orden temporal** de los mensajes entre UI, Servicio y Repositorios al **programar** un encuentro.  
-- **Qué representa.** La UI envía solicitud con equipos/fecha/hora/árbitro; el Servicio valida que **local ≠ visitante**, consulta existencia de equipos y árbitro, y persiste el partido.  
-- **Cómo leerlo.** Mensajes verticales en el tiempo; llamadas a repositorios claramente separadas.  
-- **Razón de diseño.** Mantener **coherencia** entre validaciones y persistencia; **menor acoplamiento** (Servicios vs Repos).  
-- **Relación con BD / reglas.** Inserta en `matches`, aplica la regla `home_team_id <> away_team_id`.
+## 5.3 Secuencia – Programar Partido
+
+* **Propósito:** visualizar la interacción entre UI → Servicio → Repositorios.
+* **Flujo:** validación de equipos → persistencia → asignación de árbitro.
+* **Regla:** home_team_id ≠ away_team_id.
 
 [Diagrama de Secuencia (Programar Partido)](../../modeling-and-docs/uml/export/sequence_programar_partido.png)
 
 ---
 
-### 5.4 Comunicación (Registrar Resultado)
-- **Propósito.** Mostrar la **colaboración** entre objetos con **numeración de mensajes**, equivalente a la secuencia pero desde la **topología** de relaciones.  
-- **Qué representa.** El Admin entrega los goles en la UI → Servicio valida → Repositorio consulta/actualiza el partido.  
-- **Cómo leerlo.** Se siguen los números de mensajes (1, 2, 3…) para reconstruir el hilo de interacción.  
-- **Razón de diseño.** Útil en auditorías o informes impresos donde la **red de colaboración** es más informativa que el eje temporal.  
-- **Relación con BD / reglas.** Cambios en `matches` y transición `scheduled → played`.
+## 5.4 Comunicación – Registrar Resultado
+
+* **Propósito:** mostrar la colaboración entre objetos.
+* **Flujo:** UI → Service → Repo → BD → Confirmación.
 
 [Diagrama de Comunicación](../../modeling-and-docs/uml/export/communication_registrar_resultado.png)
 
 ---
 
-### 5.5 Paquetes
-- **Propósito.** Organizar el sistema en **capas/modularidad**: UI, Application, Domain, Infrastructure.  
-- **Qué representa.** UI (formularios/listados), Servicios de aplicación (validaciones y orquestación), Entidades de dominio (Team, Player, Match, Referee) y Repositorios/Conexión a BD.  
-- **Cómo leerlo.** Dependencias dirigidas: **UI usa Application**; **Application usa Domain e Infrastructure**.  
-- **Razón de diseño.** Mejora **mantenibilidad** y favorece **pruebas unitarias** al aislar la lógica del acceso a datos.  
-- **Relación con BD / reglas.** Infrastructure encapsula DAOs/ORM; Domain expresa reglas como invariantes (equipos distintos).
+## 5.5 Paquetes
+
+* **Capas:** UI, Application, Domain, Infrastructure.
+* **Objetivo:** modularidad y separación de responsabilidades.
 
 [Diagrama de Paquetes](../../modeling-and-docs/uml/export/package.png)
 
 ---
 
-### 5.6 Clases
-- **Propósito.** Describir la **estructura estática** del dominio con atributos y asociaciones cardinalizadas.  
-- **Qué representa.** `Team (1) — (0..*) Player`; `Match → Team` (local/visitante) y `Match → Referee`; `MatchStatus` como enumeración.  
-- **Cómo leerlo.** Atributos centrales (name, email, status), relaciones y multiplicidades.  
-- **Razón de diseño.** Mantener el modelo **mínimo** y **coherente** con el relacional.  
-- **Relación con BD / reglas.** Traduce a tablas `teams`, `players`, `referees`, `matches` y `match_status`.
+## 5.6 Clases
+
+* **Entidades:** Team, Player, Referee, Match, MatchStatus.
+* **Relaciones:** Team 1–N Player, Match → Team (local/visitante), Match → Referee.
+* **Coherencia:** corresponde directamente al modelo relacional.
+
 
 [Diagrama de Clases](../../modeling-and-docs/uml/export/class.png)
 
 ---
 
-### 5.7 Objetos
-- **Propósito.** Validar el modelo con **instancias concretas** (datos de ejemplo).  
-- **Qué representa.** Un `Match` **scheduled** entre **Tiburones FC** y **Leones SC** con **Referee** asignado, previo a registrar el resultado.  
-- **Cómo leerlo.** Objetos con valores y referencias explícitas (home_team/away_team/referee).  
-- **Razón de diseño.** Comprueba cardinalidades y coherencia antes de poblar la BD.  
-- **Relación con BD / reglas.** Refleja un registro real en `matches` y sus FKs.
+## 5.7 Objetos
+
+* **Propósito:** ejemplificar un partido real con equipos y árbitro.
 
 [Diagrama de Objetos](../../modeling-and-docs/uml/export/object.png)
 
 ---
 
-### 5.8 Estados (Partido)
-- **Propósito.** Modelar el **ciclo de vida** del partido.  
-- **Qué representa.** Estados `scheduled`, `played` y `cancelled` con transiciones válidas.  
-- **Cómo leerlo.** Flechas con eventos (registrar resultado → *played*; cancelar → *cancelled*).  
-- **Razón de diseño.** Evitar estados ambiguos y reforzar **consistencia** operacional.  
-- **Relación con BD / reglas.** Persistido en `matches.status` (ENUM/CHK).
+## 5.8 Estados (Partido)
+
+* **Estados:** scheduled → played / cancelled.
+* **Reglas:** transiciones controladas por acciones del sistema.
 
 [Diagrama de Estados](../../modeling-and-docs/uml/export/state_match.png)
 
 ---
 
-### 5.9 Secuencia (Registrar Resultado)
-- **Propósito.** Registrar el **marcador** asegurando precondiciones.  
-- **Qué representa.** UI → Servicio `registerResult()` → Repo `find/update`.  
-- **Cómo leerlo.** Incluye validación de estado y actualización atómica.  
-- **Relación con BD / reglas.** Cambios en `matches` y recálculo de vistas estadísticas.
+## 5.9 Secuencia – Registrar Resultado
+
+* **Propósito:** representar el proceso completo de registro de resultado.
+* **Flujo:** ingreso → validación → actualización → confirmación.
 
 [Diagrama de Secuencia (Registrar Resultado)](../../modeling-and-docs/uml/export/sequence_registrar_resultado.png)
 
 ---
 
-### 5.10 Componentes
-- **Propósito.** Exponer la solución en **módulos desplegables**: API Torneos, Módulo Partidos, Módulo Equipos, Módulo Árbitros y BD.  
-- **Qué representa.** Dependencias de los módulos con la BD; API como **fachada**.  
-- **Cómo leerlo.** Cajas = componentes; enlaces = dependencias.  
-- **Relación con BD / reglas.** Cada componente mapea entidades/servicios a tablas.
+## 5.10 Componentes
+
+* **Componentes:** Web Client → API → Módulos internos → BD.
+* **Objetivo:** identificar el ecosistema técnico del sistema.
 
 [Diagrama de Componentes](../../modeling-and-docs/uml/export/component.png)
 
 ---
 
-### 5.11 Tiempo (Timing)
-- **Propósito.** Resumir **temporalmente** el ciclo de un partido y la interacción con la UI/Servicio.  
-- **Qué representa.** Transiciones de *scheduled* a *played* en la línea de tiempo, con hitos (programación, registro de resultado).  
-- **Cómo leerlo.** Ejes concisos por participante/estado.  
-- **Razón de diseño.** Identificar **esperas** y momentos críticos (p. ej., registro tardío de resultados).
+## 5.11 Diagrama de Tiempo (Timing)
+
+* **Propósito:** ilustrar el ciclo temporal del partido desde programación hasta cierre.
 
 [Diagrama de Tiempo](../../modeling-and-docs/uml/export/timing_match.png)
 
 ---
 
-### 5.12 Instalación (Deployment/Install)
-- **Propósito.** Mostrar **nodos físicos/lógicos** y **pasos mínimos** de instalación local.  
-- **Qué representa.** Cliente (navegador), Servidor de Aplicaciones (API/Servicios) y Servidor de BD (MySQL/PostgreSQL) con puertos y prerequisitos (variables de entorno).  
-- **Cómo leerlo.** Nodos conectados por HTTP/HTTPS y TCP (3306/5432).  
-- **Relación con BD / reglas.** Alinea los scripts y la configuración de conexión.
+## 5.12 Instalación / Deployment
+
+* **Estructura:** Cliente Web → Servidor API (Docker) → Servidor BD.
+* **Comunicación:** HTTP/HTTPS y conexión SQL.
 
 [Diagrama de Instalación](../../modeling-and-docs/uml/export/installation.png)  
+
 [Diagrama de Despliegue](../../modeling-and-docs/uml/export/deployment.png)
+
+---
+
+# 9. Conclusión
+
+La documentación del proyecto **SIGET** refleja un sistema sólido y coherente para la gestión de torneos deportivos.
+El análisis, las reglas del negocio, el modelado UML y la base de datos normalizada proporcionan la estructura necesaria para implementar una solución escalable, transparente y confiable.
+
+El modelo presentado permite extender SIGET en fases posteriores, incorporando funcionalidades como reportes avanzados, múltiples torneos, autenticación completa y control de sanciones, manteniendo siempre la integridad de los datos.
+

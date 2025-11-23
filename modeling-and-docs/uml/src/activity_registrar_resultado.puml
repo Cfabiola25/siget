@@ -1,18 +1,43 @@
 @startuml
-title Actividad: Registrar Resultado
+title Actividad – Registrar resultado
+
+|Árbitro|
 start
-:Recibir matchId y goles;
-if (Partido existe?) then (sí)
-  if (Estado == scheduled?) then (sí)
-    :Validar goles >= 0;
-    :Actualizar estado a played;
-    :Guardar homeGoals y awayGoals;
-    :Confirmar;
-  else (no)
-    :Rechazar - solo partidos programados;
-  endif
+:Seleccionar partido pendiente;
+
+|Sistema|
+:Obtener datos del partido;
+
+if (Partido válido?) then (sí)
 else (no)
-  :Error - partido no encontrado;
+  :Error – partido no válido;
+  --> start
 endif
+
+if (Estado = "scheduled"?) then (sí)
+  :Solicitar goles local y visitante;
+else (no)
+  :Rechazar – solo partidos programados;
+  --> start
+endif
+
+|Árbitro|
+:Ingresar homeGoals y awayGoals;
+
+|Sistema|
+if (goles >= 0?) then (sí)
+else (no)
+  :Error – goles inválidos;
+  --> "Ingresar homeGoals y awayGoals"
+endif
+
+|Base de Datos|
+:Actualizar partido\n(estado = played,\nhomeGoals, awayGoals);
+:Actualizar estadísticas\ny tabla de posiciones;
+
+|Sistema|
+:Mostrar confirmación;
+
+|Árbitro|
 stop
 @enduml
